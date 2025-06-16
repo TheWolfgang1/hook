@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css';
 
 const AddMovie = ({ onAddMovie }) => {
   const [newMovie, setNewMovie] = useState({
@@ -41,6 +42,12 @@ const AddMovie = ({ onAddMovie }) => {
           placeholder="URL de l'affiche"
           value={newMovie.posterUrl}
           onChange={e => setNewMovie({...newMovie, posterUrl: e.target.value})}
+        />
+        <input 
+          type="text"
+          placeholder="URL de la bande-annonce"
+          value={newMovie.trailer}
+          onChange={e => setNewMovie({...newMovie, trailer: e.target.value})}
         />
         <input
           type="number"

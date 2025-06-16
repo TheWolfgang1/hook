@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
+import '../App.css';
+import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie }) => {
+function MovieCard({ movie }) {
   return (
     <div className="movie-card">
-      <img src={movie.posterUrl} alt={movie.title} />
+      <img src={movie.posterUrl} alt={movie.title} style={{ width: "200px" }} />
       <h3>{movie.title}</h3>
-      <p>{movie.description}</p>
-      <div>Note: {movie.rating}/5</div>
+      <Link to={`/description/${movie.id}`}>Voir plus</Link>
     </div>
   );
-};
+}
 
 export default MovieCard;
