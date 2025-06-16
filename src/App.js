@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddMovie from "./components/AddMovie";
@@ -6,7 +6,7 @@ import MovieList from "./components/MovieList";
 import Description from "./components/Description";
 
 function App() {
-  const movies = [
+  const [movies, setMovies] = useState([
     {
       id: 1,
       title: "Inception",
@@ -28,16 +28,25 @@ function App() {
       description: "Dans un proche futur, la Terre est devenue hostile pour l'homme. Les tempêtes de sable sont fréquentes et il n'y a plus que le maïs qui peut être cultivé, en raison d'un sol trop aride. Cooper est un pilote, recyclé en agriculteur, qui vit avec son fils et sa fille dans la ferme familiale.",
       trailer: "https://www.youtube.com/embed/zSWdZVtXT7E",
     },
-  ];
+  ]);
 
-  return (
+   // Fonction pour ajouter un film
+  const addMovie = (newMovie) => {
+    setMovies([...movies, { ...newMovie, id: movies.length + 1 }]);
+  };
+
+
+
+ return (
     <Router>
+      <AddMovie onAddMovie={addMovie} />
       <Routes>
         <Route path="/" element={<MovieList movies={movies} />} />
         <Route path="/description/:id" element={<Description movies={movies} />} />
       </Routes>
     </Router>
-  );
+  ); 
+
 }
 
 export default App;
