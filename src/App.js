@@ -41,9 +41,14 @@ function App() {
   // Utilise React Router pour gérer la navigation entre les composants
  return (
     <Router>
-      <AddMovie onAddMovie={addMovie} />
       <Routes>
-        <Route path="/" element={<MovieList movies={movies} />} />
+        <Route path="/" element={
+        <>
+          <AddMovie onAddMovie={addMovie} />
+          <MovieList movies={movies} />
+        </>
+      }
+    />
         <Route path="/description/:id" element={<Description movies={movies} />} />
       </Routes>
     </Router>
