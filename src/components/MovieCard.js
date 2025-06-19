@@ -2,14 +2,22 @@ import React from "react";
 import '../App.css';
 import { Link } from "react-router-dom";
 
-function MovieCard({ movie }) {
+// Ce composant affiche la liste des films
+function MovieList({ movies }) {
   return (
-    <div className="movie-card">
-      <img src={movie.posterUrl} alt={movie.title} style={{ width: "200px" }} />
-      <h3>{movie.title}</h3>
-      <Link to={`/description/${movie.id}`}>Voir plus</Link>
+    <div>
+      {/* Parcourt la liste des films et affiche chaque fiche */}
+      {movies.map((movie) => (
+        <div key={movie.id}>
+          {/* Le titre et l'affiche sont cliquables et mènent à la page de détails */}
+          <Link to={`/movie/${movie.id}`}>
+            <img src={movie.posterUrl} alt={movie.title} />
+            <h2>{movie.title}</h2>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }
 
-export default MovieCard;
+export default MovieList;
