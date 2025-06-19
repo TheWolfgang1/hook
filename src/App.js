@@ -5,6 +5,8 @@ import AddMovie from "./components/AddMovie";
 import MovieList from "./components/MovieList";
 import Description from "./components/Description";
 
+// Composant principal de l'application
+// Utilise le hook useState pour gérer l'état des films
 function App() {
   const [movies, setMovies] = useState([
     {
@@ -35,8 +37,8 @@ function App() {
     setMovies([...movies, { ...newMovie, id: movies.length + 1 }]);
   };
 
-
-
+  // Composant principal de l'application
+  // Utilise React Router pour gérer la navigation entre les composants
  return (
     <Router>
       <AddMovie onAddMovie={addMovie} />
